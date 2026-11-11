@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- index.html -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#22283f">
+  <title>GoatedBuy spreadsheet — Guide des liens, tailles et photos QC</title>
+  <meta name="description" content="Utilisez un GoatedBuy spreadsheet pour comparer les liens produits, vérifier les tailles et les photos QC, puis estimer le coût total de votre colis.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="GoatedBuy spreadsheet — Guide des liens, tailles et photos QC">
+  <meta property="og:description" content="Un guide en français pour vérifier une annonce, comparer les mesures et préparer un colis.">
+  <link rel="preconnect" href="https://superstreet.fbitsstatic.net">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #22283f;
+      --muted: #53576b;
+      --paper: #f8f6f1;
+      --white: #fff;
+      --line: #d9d7df;
+      --lilac: #e9e3ff;
+      --lime: #e4efab;
+      --accent: #4d3489;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { line-height: 1.12; }
+    h1 { font-size: clamp(2.65rem, 6.3vw, 5.65rem); letter-spacing: -.065em; overflow-wrap: anywhere; }
+    h2 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.045em; }
+    h3 { font-size: 1.22rem; }
+    p { max-width: 70ch; }
+    p + p { margin-top: .75rem; }
+    a { color: inherit; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #7652c4; outline-offset: 4px; }
+    .shell { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+    .mast { background: var(--ink); color: var(--white); }
+    .mast .shell { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding-block: .8rem; }
+    .brand { font-weight: 800; text-decoration: none; }
+    .mast p { color: var(--lime); font-size: .88rem; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 1px; margin-block: 1.4rem; overflow: hidden; border: 1px solid var(--line); border-radius: 1.25rem; background: var(--line); }
+    .hero-copy { padding: clamp(1.3rem, 4vw, 3.5rem); background: var(--lilac); }
+    .hero-copy p { margin-top: 1.05rem; }
+    .hero-art { display: grid; align-content: center; padding: 1rem; background: var(--white); }
+    .hero-art img { width: min(100%, 350px); height: auto; margin-inline: auto; }
+    figcaption { font-size: .85rem; color: var(--muted); }
+    .hero-art figcaption { margin-inline: auto; text-align: center; }
+    .button { display: inline-block; margin-top: 1.25rem; padding: .65rem 1rem; border-radius: .45rem; background: var(--ink); color: var(--white); font-weight: 750; text-decoration: none; }
+    .button:hover { background: var(--accent); }
+    .categories { padding: clamp(1rem, 3vw, 1.6rem); border: 1px solid var(--line); border-radius: 1rem; background: var(--white); }
+    .categories h2 { font-size: clamp(1.45rem, 3vw, 2rem); }
+    .category-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 175px), 1fr)); gap: .55rem; margin: .85rem 0 0; padding: 0; list-style: none; }
+    .category-list a { display: flex; align-items: center; justify-content: space-between; gap: .4rem; height: 100%; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: .4rem; text-decoration: none; font-size: .9rem; font-weight: 700; }
+    .category-list a:hover { background: var(--lime); border-color: var(--ink); }
+    .section { margin-block: clamp(2.4rem, 6vw, 5rem); }
+    .section > p { margin-top: .75rem; color: var(--muted); }
+    .guides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 1rem; }
+    .guide { padding: clamp(1rem, 3vw, 1.5rem); background: var(--white); border: 1px solid var(--line); border-radius: .85rem; }
+    .guide p { margin-top: .65rem; }
+    .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: 1rem; }
+    .gallery figure { padding: .55rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--white); }
+    .gallery img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: #f8f8f8; }
+    .gallery figcaption { padding: .45rem .15rem .15rem; }
+    .example { margin-top: 1rem; padding: 1rem 1.25rem; border-left: .35rem solid var(--accent); background: var(--lilac); }
+    .example p { margin-top: .45rem; }
+    .faq { max-width: 780px; }
+    .faq h2 { margin-bottom: .85rem; }
+    details { border-bottom: 1px solid var(--line); padding: .75rem 0; }
+    summary { padding: .25rem .2rem; font-weight: 750; cursor: pointer; }
+    details p { margin: .45rem .25rem .4rem; }
+    footer { padding-block: 1.5rem; background: var(--ink); color: var(--white); }
+    footer p { margin-top: .45rem; font-size: .9rem; }
+    @media (max-width: 680px) {
+      .hero, .guides { grid-template-columns: 1fr; }
+      .hero-art img { width: min(65%, 250px); }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "GoatedBuy spreadsheet — Guide des liens, tailles et photos QC",
+    "inLanguage": "fr",
+    "description": "Un guide en français pour vérifier une annonce, comparer les mesures et préparer un colis.",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qu’est-ce qu’un GoatedBuy spreadsheet ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "C’est un tableau de repérage qui rassemble des liens vers des annonces de vendeurs. Une ligne sert à retrouver une fiche et à comparer un article. Le vendeur reste la source à consulter pour la variante, le prix et la disponibilité."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que faire si un lien Weidian ou Taobao ne s’ouvre plus ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Recherchez la référence de l’article et le nom du vendeur. Si vous trouvez une autre fiche, vérifiez sa référence, ses mesures et ses variantes avant de la retenir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Les photos QC prouvent-elles l’authenticité d’un article ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les photos QC aident à repérer des défauts visibles et à vérifier la variante reçue. Pour un achat de marque, privilégiez un revendeur autorisé et vérifiez les justificatifs de provenance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment estimer le coût d’une livraison en France ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Additionnez le prix de l’article, la livraison jusqu’à l’entrepôt, les frais de service, le transport international et les éventuels frais à l’arrivée. Comparez les devis pour la même destination et les mêmes dimensions de colis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Où mènent les catégories de cette page ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les catégories ouvrent le catalogue Hipobuyfind. Ce guide éditorial est indépendant de GoatedBuy et des marques illustrées."
+        }
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/briyu/">
+</head>
+<body>
+  <header class="mast">
+    <div class="shell">
+      <a class="brand" href="https://www.hipobuyfind.com">hipobuyfind.com</a>
+      <p>Guide d’achat indépendant</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <h1 id="page-title">GoatedBuy spreadsheet</h1>
+        <p>Un GoatedBuy spreadsheet rassemble des liens vers des annonces de vendeurs. Avant de garder une référence, ouvrez la fiche d’origine, vérifiez la variante et comparez les mesures. Les photos de contrôle et un devis de livraison affinent ensuite votre choix.</p>
+        <a class="button" href="https://www.hipobuyfind.com">Ouvrir le catalogue Hipobuyfind</a>
+      </div>
+      <figure class="hero-art">
+        <img src="https://superstreet.fbitsstatic.net/img/p/tenis-air-force-1-07-cw2288-111-branco-93581/304687-1.jpg?h=435&amp;v=202503051900&amp;w=435" width="435" height="435" fetchpriority="high" loading="eager" alt="Nike Air Force 1 ’07 blanche, vue de profil">
+        <figcaption>Nike Air Force 1 ’07, illustration éditoriale.</figcaption>
+      </figure>
+    </section>
+
+    <nav class="categories" aria-labelledby="categories-title">
+      <h2 id="categories-title">Parcourir les catégories</h2>
+      <ul class="category-list">
+        <li><a href="https://hipobuyfind.com/category-911-Shoes.html">Chaussures <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html">Sweats et pulls <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-shirts <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-914-Jackets.html">Vestes <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html">Pantalons et shorts <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-916-Headwear.html">Casquettes et bonnets <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-917-Sets.html">Ensembles <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html">Sous-vêtements <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-919-Jersey.html">Maillots <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-920-Accessories.html">Accessoires <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+
+    <section class="section" aria-labelledby="guide-title">
+      <h2 id="guide-title">De la fiche produit au colis</h2>
+      <p>Pour départager deux annonces, relevez les mêmes informations sur chacune. Une référence exacte, une mesure en centimètres et un devis pour la même destination rendent la comparaison plus fiable.</p>
+      <div class="guides">
+        <article class="guide">
+          <h3>Vérifier les liens produits GoatedBuy</h3>
+          <p>Pour vérifier un lien produit Weidian ou une annonce Taobao, relevez le nom du vendeur, la référence du modèle et la date de consultation. Sélectionnez le coloris et la taille voulus sur la fiche source. Si deux annonces reprennent les mêmes photos, comparez les mesures et la composition affichées pour la variante choisie.</p>
+        </article>
+        <article class="guide">
+          <h3>Lire un guide des tailles en centimètres</h3>
+          <p>Mesurez à plat un vêtement qui vous va. Pour un sweat, comparez la largeur sous les aisselles et la longueur du dos. Pour un pantalon, comparez la largeur à la taille et la longueur d’entrejambe. Pour les chaussures, mesurez votre pied et vérifiez si le tableau indique la longueur du pied ou celle de la semelle intérieure.</p>
+        </article>
+        <article class="guide">
+          <h3>Examiner les photos QC GoatedBuy</h3>
+          <p>QC désigne le contrôle qualité. Quand des photos de l’article reçu sont disponibles, comparez la couleur, l’étiquette de taille et les finitions visibles. Pour une paire de baskets, observez les coutures et la semelle. Pour un sac, demandez si possible un gros plan de la fermeture et des angles avant d’autoriser l’expédition.</p>
+        </article>
+        <article class="guide">
+          <h3>Estimer les frais de livraison GoatedBuy</h3>
+          <p>Notez le prix de l’article, le transport jusqu’à l’entrepôt, les frais de service et les éventuels frais à l’arrivée. Demandez le poids réel et les dimensions du carton pour comparer les devis. Si un transporteur utilise le poids volumétrique, une boîte encombrante peut changer le coût total du colis.</p>
+        </article>
+      </div>
+      <aside class="example" aria-labelledby="example-title">
+        <h3 id="example-title">Exemple de comparaison</h3>
+        <p>Votre sweat mesure 58&nbsp;cm de large à plat. Une fiche indique 116&nbsp;cm de tour de poitrine, soit 58&nbsp;cm à plat si les deux mesures concernent bien le vêtement au même niveau. Vérifiez ce point avant de choisir la taille.</p>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Les détails à observer selon l’article</h2>
+      <p>Ces visuels illustrent des points de contrôle. La disponibilité des modèles se vérifie sur les fiches des vendeurs.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/327C25A2970X5803_E01-1?%24default_GHC%24=&amp;crop=457%2C150%2C1095%2C1361&amp;wid=450" width="450" height="450" loading="lazy" decoding="async" alt="Veste à capuche Dior Oblique en jacquard bleu">
+          <figcaption><strong>Dior.</strong> Comparez le raccord du motif aux coutures.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1751298339/838745_3HBC4_2600_001_100_0000_Light.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Casquette Gucci en toile à motif GG">
+          <figcaption><strong>Gucci.</strong> Vérifiez le tour de tête et la plage de réglage.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.fashionphile.com/cdn/shop/files/3c23586f09b6e1e9cf5f738c46ce7476.jpg?v=1776971082&amp;width=450" width="450" height="450" loading="lazy" decoding="async" alt="Sac Louis Vuitton Speedy 25 en toile Monogram">
+          <figcaption><strong>Louis Vuitton.</strong> Examinez les angles du sac et les attaches des anses.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.hermes.com/is/image/hermesproduct/bracelet-clic-h--700001F%204P-front-1-300-0-1000-1000_b.jpg?wid=450" width="450" height="450" loading="lazy" decoding="async" alt="Bracelet Hermès Clic H en émail avec fermoir en H">
+          <figcaption><strong>Hermès.</strong> Contrôlez la fermeture et le tour intérieur du bracelet.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions fréquentes</h2>
+      <details open>
+        <summary>Qu’est-ce qu’un GoatedBuy spreadsheet ?</summary>
+        <p>C’est un tableau de repérage qui rassemble des liens vers des annonces de vendeurs. Une ligne sert à retrouver une fiche et à comparer un article. Le vendeur reste la source à consulter pour la variante, le prix et la disponibilité.</p>
+      </details>
+      <details>
+        <summary>Que faire si un lien Weidian ou Taobao ne s’ouvre plus ?</summary>
+        <p>Recherchez la référence de l’article et le nom du vendeur. Si vous trouvez une autre fiche, vérifiez sa référence, ses mesures et ses variantes avant de la retenir.</p>
+      </details>
+      <details>
+        <summary>Les photos QC prouvent-elles l’authenticité d’un article ?</summary>
+        <p>Les photos QC aident à repérer des défauts visibles et à vérifier la variante reçue. Pour un achat de marque, privilégiez un revendeur autorisé et vérifiez les justificatifs de provenance.</p>
+      </details>
+      <details>
+        <summary>Comment estimer le coût d’une livraison en France ?</summary>
+        <p>Additionnez le prix de l’article, la livraison jusqu’à l’entrepôt, les frais de service, le transport international et les éventuels frais à l’arrivée. Comparez les devis pour la même destination et les mêmes dimensions de colis.</p>
+      </details>
+      <details>
+        <summary>Où mènent les catégories de cette page ?</summary>
+        <p>Les catégories ouvrent le catalogue Hipobuyfind. Ce guide éditorial est indépendant de GoatedBuy et des marques illustrées.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <a class="brand" href="https://www.hipobuyfind.com">hipobuyfind.com</a>
+      <p>Guide de recherche de produits, de lecture des photos QC et de préparation d’un colis.</p>
+    </div>
+  </footer>
+</body>
+</html>
